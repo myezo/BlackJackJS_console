@@ -1,0 +1,11 @@
+body{
+	background-color: #277714;
+}
+
+img{
+	background-color: white;
+	width: 130px;
+	height: 200px;
+	display: inline;
+	margin: 10px;
+}

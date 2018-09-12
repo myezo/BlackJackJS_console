@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlackJack</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<button id="deal" onclick="Start()">Deal</button>
+	<button id="hit" onclick="Hit()">Hit</button>
+	<button id="stand" onclick="Stand()">Stand</button>
+
+	<div id="wrapper">
+		<div id="dealer">
+
+		</div>
+
+		<div id="player">
+		
+		</div>
+	</div>
+	
+
+
+<script type="text/javascript">
+
+	var playerScore = 0;
+	var dealerScore = 0;
+	var playerCard = 0;
+	var dealerCard = 0;
+
+
+	function Start(){
+		Deal();
+	}
+
+	function Deal(){
+		Player();
+		Dealer();
+		DisplayCards();
+	}
+
+	function DisplayCards(){
+		document.getElementById("dealer").innerHTML="<img src='images/2_of_clubs.png' />";
+	}
+
+	function Player(){
+
+		var card1 = 0;
+		var card2 = 0;
+
+		playerCard = Math.floor(Math.random() * 10) + 2;
+		console.log(playerCard);
+		card1 = playerCard;
+
+		playerCard = Math.floor(Math.random() * 10) + 2;
+		console.log(playerCard);
+		card2 = playerCard;
+
+		playerScore = card1 + card2;
+		console.log("Player Score: " + playerScore);
+	}
+
+	function Dealer(){
+		dealerCard = Math.floor(Math.random() * 10) + 2;
+		dealerScore = dealerCard;
+		console.log(dealerScore);
+		console.log("Dealer Score: " + dealerScore);
+	}
+
+	function Hit(){
+		var card = Math.floor(Math.random() * 10) + 2;
+		playerScore = playerScore + card;
+		console.log(card);
+		console.log("Player Score: " + playerScore);
+		if(playerScore > 21){
+			console.log("Bust! Dealer Wins");
+		}
+	}
+
+	function Stand(){
+		var card = Math.floor(Math.random() * 10) + 2;
+		dealerScore = dealerScore + card;
+		console.log(card);
+
+		while(dealerScore <= 16){
+			card = Math.floor(Math.random() * 10) + 2;
+			console.log(card);
+			dealerScore = dealerScore + card;
+			console.log("Dealer Score: " + dealerScore);
+		}
+
+		if(dealerScore > 21){
+			console.log("Dealer Bust! You Win!");
+		}else if(dealerScore > 16 && dealerScore == playerScore){
+			console.log("Push!");
+		}else if(dealerScore < playerScore){
+			console.log("You Win!");
+		}else{
+			console.log(dealerScore + " Dealer Wins");
+		}
+
+	}
+
+
+	/*
+	Click Deal
+	Player Recieves one card
+	Dealer recieves one card face down
+	Player recieves second card
+	dealer recieves second card face up
+	player card + player card = playerScore
+	dealer card = dealerscore
+
+
+	if player hits
+		playerScore + playerCard = playerScore
+		else if player stands
+			dealer turns first card
+			first card + second card = dealerScore
+		else if
+			playerScore > 21
+			players Busts
+
+
+	if dealerScore is less then or equal to 16
+		new card is dealt
+		dealerScore + dealerCard = dealerScore
+
+	if dealerScore > 21
+		dealer Busts player wins 
+		else
+		player busts dealer wins
+	*/
+
+	/****Deck of Cards*****/
+	/*
+	first card to player
+	second to dealer facedown
+	third to player
+	forth to dealer
+
+	if player hits they are dealt a card
+	if player stands dealer first card flips
+	recieves another card if score is 16 or less
+	*/
+
+	/******Images On Click*******/
+	/*
+	4 random numbers selected from 52
+	Numbers cannot be selected twice
+	numbers are matched to 
+	*/
+
+
+
+</script>
+</body>
+</html>
